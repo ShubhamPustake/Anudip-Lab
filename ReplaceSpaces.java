@@ -5,27 +5,19 @@ Example: There are   3   spaces. Should become: There#are#3#spaces.*/
 public class ReplaceSpaces {
 
     public static void main(String[] args) {
-        String sentence = "There are   3   spaces.";
-        String result = replaceSpacesWithHash(sentence);
-        System.out.println(result);
+
+        String input = "There are   3   spaces";
+
+        String replaced = replaceSpaces(input);
+
+        System.out.println("Orignal - " + input);
+        System.out.println("Replace - " + replaced);
+
     }
 
-    public static String replaceSpacesWithHash(String sentence) {
-        StringBuilder result = new StringBuilder();
-        boolean inSpace = false;
-
-        for (char ch : sentence.toCharArray()) {
-            if (ch == ' ') {
-                if (!inSpace) {
-                    result.append('#');
-                    inSpace = true;
-                }
-            } else {
-                result.append(ch);
-                inSpace = false;
-            }
-        }
-
-        return result.toString();
+    public static String replaceSpaces(String input) {
+        String replaced = input.replaceAll("\\s+", "#");
+        return replaced;
     }
+
 }
